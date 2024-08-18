@@ -1,0 +1,8 @@
+library(pheatmap)
+library(RColorBrewer)
+breaksList = seq(0, 80, by = 1)
+d<-read.table("CBE.table",header=T,row.names=1,sep="\t")
+pdf("CBE.pdf")
+pheatmap(d, color = colorRampPalette(brewer.pal(n = 8, name = "Blues"))(length(breaksList)), breaks = breaksList,   cluster_rows=F, cluster_cols=F, border_color="black",  display_numbers=T,number_color = "black",  fontsize = 16,  fontsize_number=24, number_format="%.2f",)
+#pheatmap(a,cluster_rows=F,cluster_cols=F,display_numbers=T,fontsize_number=8,number_format = "%.2f",color = colorRampPalette(c("white","navy"))(100))
+dev.off()
